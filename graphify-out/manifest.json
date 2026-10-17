@@ -1,0 +1,26 @@
+{
+  "brand.md": {
+    "mtime": 1792183922.8358479,
+    "seen": 1792184041.300211,
+    "ast_hash": "0587918da7e4b6fb7977e84ee373f0b8",
+    "semantic_hash": "0587918da7e4b6fb7977e84ee373f0b8"
+  },
+  "company-and-campaigns.md": {
+    "mtime": 1792183923.8961124,
+    "seen": 1792184041.300212,
+    "ast_hash": "c5df35389daa9f9a33b726fc813860dd",
+    "semantic_hash": "c5df35389daa9f9a33b726fc813860dd"
+  },
+  "product-images.md": {
+    "mtime": 1792183898.0762544,
+    "seen": 1792184041.300213,
+    "ast_hash": "8a3cc805706d059f3738e8b072d60225",
+    "semantic_hash": "8a3cc805706d059f3738e8b072d60225"
+  },
+  "products.md": {
+    "mtime": 1792183898.0761185,
+    "seen": 1792184041.300213,
+    "ast_hash": "2dcc74f2a1ae7a9793bf80f05272868c",
+    "semantic_hash": "2dcc74f2a1ae7a9793bf80f05272868c"
+  }
+}
