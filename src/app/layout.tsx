@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Barlow, Barlow_Condensed, Instrument_Serif } from "next/font/google";
+import { Barlow, Barlow_Condensed } from "next/font/google";
 import "./globals.css";
 
 // Display: the condensed caps printed on every Zyro can and campaign
@@ -7,17 +7,9 @@ const display = Barlow_Condensed({
   variable: "--font-display",
   subsets: ["latin"],
   weight: ["500", "600", "700", "800"],
-  style: ["normal", "italic"],
 });
 
-// Voice: the big serif "0" motif and the founder's words
-const serif = Instrument_Serif({
-  variable: "--font-serif",
-  subsets: ["latin"],
-  weight: "400",
-  style: ["normal", "italic"],
-});
-
+// Body and lead text
 const body = Barlow({
   variable: "--font-body",
   subsets: ["latin"],
@@ -36,7 +28,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
-    <html lang="en" className={`${display.variable} ${serif.variable} ${body.variable} antialiased`}>
+    <html lang="en" className={`${display.variable} ${body.variable} antialiased`}>
       <body>{children}</body>
     </html>
   );

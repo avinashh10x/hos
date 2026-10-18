@@ -31,7 +31,6 @@ export function Loader() {
           .timeline({
             onComplete: () => {
               smooth.lenis?.start();
-              window.dispatchEvent(new Event("zyro:enter"));
               setDone(true);
             },
           })
@@ -45,7 +44,9 @@ export function Loader() {
           })
           .to("[data-loader-line]", { scaleX: 1, duration: 0.6, ease: "power3.inOut" }, "<")
           .to("[data-loader-copy]", { yPercent: -120, duration: 0.6, ease: "power3.in", stagger: 0.05 }, "+=0.15")
-          .to(root.current, { clipPath: "inset(0 0 100% 0)", duration: 1.1, ease: "expo.inOut" }, "-=0.2");
+          // Start the page's entrance as the loader lifts, so the reveal and the entrance are one motion
+          .call(() => window.dispatchEvent(new Event("zyro:enter")), undefined, "-=0.2")
+          .to(root.current, { clipPath: "inset(0 0 100% 0)", duration: 1.1, ease: "expo.inOut" }, "<");
       };
 
       const wait = () => {
@@ -71,24 +72,25 @@ export function Loader() {
       style={{ clipPath: "inset(0 0 0% 0)" }}
       aria-live="polite"
     >
-      <div className="flex justify-between overflow-clip">
-        <span data-loader-copy className="eyebrow block">
+      <div className="flex items-center justify-between overflow-clip">
+        <span data-loader-copy className="mark-mask block h-9 w-[92px] md:h-11 md:w-[110px]" aria-label="Zyro" role="img" />
+        <span data-loader-copy className="eyebrow block text-cream/60 max-md:hidden">
           Zyro by Karan Aujla
-        </span>
-        <span data-loader-copy className="eyebrow block text-cream/60">
-          Removing everything unnecessary
         </span>
       </div>
       <div className="overflow-clip">
         <div data-loader-copy className="flex items-end justify-between gap-6">
-          <span className="serif text-[34vw] leading-[0.78] md:text-[22vw]">
+          <span className="display text-[44vw] leading-[0.78] tabular-nums md:text-[22vw]">
             <span ref={num}>100</span>
           </span>
           <span className="eyebrow mb-[3vw] hidden text-right text-cream/60 md:block">
             Sugar · Calories · Noise
           </span>
         </div>
-        <div data-loader-line className="mt-4 h-px origin-left scale-x-0 bg-zyro" />
+        <div data-loader-line className="mt-5 h-px origin-left scale-x-0 bg-zyro" />
+        <p data-loader-copy className="eyebrow mt-4 text-cream/60">
+          Removing everything unnecessary
+        </p>
       </div>
     </div>
   );

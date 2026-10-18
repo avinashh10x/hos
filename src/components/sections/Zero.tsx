@@ -11,7 +11,7 @@ const STATS = [
 ];
 
 // Built like Zyro's own listing banners: stacked claims on the left,
-// the can standing in front of a giant serif zero on the right.
+// the can standing in front of a giant zero on the right.
 export function Zero() {
   const ref = useRef<HTMLElement>(null);
   useStageTrigger(ref, { world: SURFACES.ink, variant: "blue-bolt" });
@@ -63,7 +63,7 @@ export function Zero() {
     <section ref={ref} data-pose="zero" className="relative flex min-h-svh flex-col overflow-clip">
       {/* Behind the can */}
       <div className="pointer-events-none absolute inset-0 z-0 flex items-center justify-end md:pr-[6%]" aria-hidden>
-        <span data-ring className="serif block text-[150vw] leading-none text-white/[0.07] max-md:-mr-[30vw] md:text-[64vw]">
+        <span data-ring className="display block text-[150vw] leading-none text-white/[0.07] max-md:-mr-[30vw] md:text-[64vw]">
           0
         </span>
       </div>
@@ -93,7 +93,7 @@ export function Zero() {
         {STATS.map((s) => (
           <li key={s.label} className="border-r border-fg/15 py-6 pr-4 last:border-r-0 [&:not(:first-child)]:pl-4 md:[&:not(:first-child)]:pl-8">
             <p className="flex items-baseline gap-1.5">
-              <span data-count className="serif text-6xl leading-none tabular-nums md:text-7xl">
+              <span data-count className="display text-6xl leading-none tabular-nums md:text-7xl">
                 0
               </span>
               <span className="font-cond text-lg font-semibold uppercase opacity-60">{s.unit}</span>

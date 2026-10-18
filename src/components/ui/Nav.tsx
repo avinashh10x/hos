@@ -29,7 +29,8 @@ export function Nav() {
       }
       last = y;
     };
-    const enter = () => gsap.fromTo(ref.current, { yPercent: -110 }, { yPercent: 0, duration: 1.2, ease: "expo.out", delay: 0.6 });
+    const enter = () =>
+      gsap.fromTo(ref.current, { yPercent: -110, autoAlpha: 1 }, { yPercent: 0, duration: 1.2, ease: "expo.out", delay: 0.5 });
     window.addEventListener("scroll", onScroll, { passive: true });
     window.addEventListener("zyro:enter", enter);
     return () => {
@@ -40,7 +41,8 @@ export function Nav() {
 
   return (
     <>
-      <header ref={ref} className="fixed inset-x-0 top-0 z-50 text-fg">
+      {/* Hidden until the loader hands over (zyro:enter), so it never flashes in early */}
+      <header ref={ref} className="fixed inset-x-0 top-0 z-50 text-fg" style={{ visibility: "hidden" }}>
         <nav className="frame-px flex items-center justify-between py-4 md:py-6">
           <a
             href="#top"

@@ -48,7 +48,7 @@ export function Founder() {
   );
 
   return (
-    <section ref={ref} data-pose="founder" data-pose-hold className="relative h-[170vh]">
+    <section ref={ref} data-pose="founder" data-pose-hold data-reveal-scope className="relative h-[170vh]">
       <div className="sticky top-0 z-20 flex h-svh items-center">
         <div
           data-karan
@@ -65,11 +65,11 @@ export function Founder() {
           />
         </div>
 
-        <div className="relative md:ml-[calc(var(--frame)*0.31)] md:w-[calc(var(--frame)*0.4)]">
+        <div className="relative md:ml-[calc(var(--frame)*0.3)] md:w-[calc(var(--frame)*0.44)]">
           <p data-reveal="fade" className="eyebrow mb-6 text-accent">
             A letter from the co-founder
           </p>
-          <p ref={letter} className="serif text-[7.6vw] leading-[1.06] md:text-[calc(var(--frame)*0.031)]">
+          <p ref={letter} className="lead text-[5.6vw] leading-[1.3] md:text-[calc(var(--frame)*0.019)]">
             {LETTER}
           </p>
           <div data-reveal="fade" className="mt-10 flex items-center gap-5">

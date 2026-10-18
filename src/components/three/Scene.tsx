@@ -28,7 +28,9 @@ function Director({ mobile }: { mobile: boolean }) {
   }, [mobile]);
 
   useFrame((_, dt) => {
-    poseAt(anchors.current, window.scrollY, target);
+    // Phones and portrait tablets shrink the can more while it moves between sections
+    const narrow = mobile || window.innerWidth / window.innerHeight < 0.9;
+    poseAt(anchors.current, window.scrollY, target, narrow ? 0.5 : 0.22);
     const k = 1 - Math.exp(-dt * 7);
     const p = stage.pose;
     for (const key of POSE_KEYS) {

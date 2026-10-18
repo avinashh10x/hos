@@ -29,7 +29,6 @@
   --color-fg: var(--fg);
   --color-accent: var(--accent);
   --font-cond: var(--font-display);
-  --font-voice: var(--font-serif);
   --font-sans: var(--font-body);
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -116,9 +115,11 @@ html.lenis body {
   .frame-px {
     padding-inline: calc((100vw - var(--frame)) / 2);
   }
-  .serif {
-    font-family: var(--font-serif);
-    font-weight: 400;
+  /* Lead text: the brand's voice in large Barlow (the site uses two fonts only) */
+  .lead {
+    font-family: var(--font-body);
+    font-weight: 500;
+    letter-spacing: -0.015em;
   }
   /* Tinted logo: the PNG becomes a mask so it takes any colour */
   .logo-mask {
@@ -137,7 +138,7 @@ html.lenis body {
   }
   /*
     SplitText reveal masks clip to their box. Display type sets line-height
-    below 1, so give the masks room for cap tops, descenders and italic overhang.
+    below 1, so give the masks room for cap tops, descenders and overhang.
   */
   .split-line-mask {
     padding-block: 0.14em;
@@ -182,7 +183,9 @@ html.lenis body {
   }
 }
 
-[data-reveal] {
+/* Hidden from first paint until their entrance runs, so nothing flashes before it */
+[data-reveal],
+[data-hero] {
   visibility: hidden;
 }
 
@@ -211,7 +214,8 @@ html.lenis body {
 }
 
 @media (prefers-reduced-motion: reduce) {
-  [data-reveal] {
+  [data-reveal],
+  [data-hero] {
     visibility: visible;
   }
 }

@@ -139,7 +139,7 @@ export function Hero() {
 
           {/* The one action */}
           <div data-hero-fade className="flex flex-col gap-4 md:items-end md:text-right">
-            <p className="serif max-w-[30ch] text-lg leading-snug md:text-xl">Zero sugar. Zero calories. By Karan Aujla.</p>
+            <p className="lead max-w-[30ch] text-lg leading-snug md:text-xl">Zero sugar. Zero calories. By Karan Aujla.</p>
             <Magnetic>
               <a
                 href="#shop"

@@ -23,7 +23,7 @@ export function RangeIntro() {
             Four ways
           </span>
           <span data-reveal="chars" data-reveal-delay="0.15" className="block">
-            to <span className="serif normal-case text-accent">0</span>
+            to <span className="text-accent">0</span>
           </span>
         </h2>
       </div>
@@ -39,7 +39,7 @@ export function RangeIntro() {
               }}
               className="group flex h-full flex-col justify-between gap-10 bg-bg p-6 transition-colors duration-500 hover:bg-fg hover:text-bg"
             >
-              <span className="serif text-3xl opacity-60">{i + 1}</span>
+              <span className="font-cond text-3xl font-semibold opacity-60">{i + 1}</span>
               <span>
                 <span className="display block text-5xl">{l.name}</span>
                 <span className="mt-2 block text-sm opacity-70">{l.tagline}</span>
@@ -128,7 +128,7 @@ export function Chapter({ line, index, side }: { line: Line; index: number; side
   const text = side === "right" ? "md:pr-[calc(var(--frame)*0.5)]" : "md:pl-[calc(var(--frame)*0.56)]";
 
   return (
-    <section ref={ref} id={line.id} data-pose={line.id} data-pose-hold className="relative" style={{ height: `${100 + n * 55}svh` }}>
+    <section ref={ref} id={line.id} data-pose={line.id} data-pose-hold data-reveal-scope className="relative" style={{ height: `${100 + n * 55}svh` }}>
       {/* Behind the can */}
       <div className="pointer-events-none sticky top-0 z-0 h-svh overflow-clip">
         <p
@@ -143,65 +143,74 @@ export function Chapter({ line, index, side }: { line: Line; index: number; side
       <div className="sticky top-0 z-20 -mt-[100svh] flex h-svh items-end md:items-center">
         <div className="frame relative pb-6 md:pb-0">
           <div className={text}>
-          <div className="max-w-[34rem] max-md:rounded-3xl max-md:bg-bg/85 max-md:p-5 max-md:backdrop-blur-md">
-            <div data-reveal="fade" className="flex items-baseline gap-4">
-              <span className="serif text-5xl leading-none text-accent md:text-6xl">{index + 1}</span>
-              <span className="serif text-xl italic opacity-80 md:text-2xl">{line.tagline}</span>
-            </div>
+          <div className="max-w-[34rem] max-md:rounded-3xl max-md:bg-bg/90 max-md:p-5 max-md:backdrop-blur-md">
+            {/* 1. The line: the main heading of this chapter */}
+            <p data-reveal="fade" className="eyebrow text-accent">
+              0{index + 1} / 04
+            </p>
             <h3 data-reveal="chars" className="display mt-3 whitespace-nowrap text-[15vw] md:text-[calc(var(--frame)*0.075)]">
               {line.name}
             </h3>
-            <p data-reveal="fade" className="mt-4 max-w-[40ch] leading-relaxed opacity-80 max-md:hidden">
+            <p data-reveal="fade" className="lead mt-4 text-xl leading-snug md:text-2xl">
+              {line.tagline}
+            </p>
+            <p data-reveal="fade" className="mt-3 max-w-[42ch] text-[0.95rem] leading-relaxed opacity-70 max-md:hidden">
               {line.body}
             </p>
 
-            <div data-reveal="fade" className="mt-7 flex flex-wrap gap-2" role="group" aria-label={`${line.name} flavours`}>
-              {line.products.map((id, i) => {
-                const p = PRODUCTS[id];
-                const on = i === active;
-                return (
-                  <button
-                    key={id}
-                    type="button"
-                    onClick={() => goTo(i)}
-                    data-cursor=""
-                    aria-pressed={on}
-                    className={`group flex items-center gap-2.5 rounded-full py-1.5 pl-1.5 pr-4 transition-all duration-500 ${
-                      on ? "bg-fg text-bg" : "bg-fg/8 hover:bg-fg/15"
-                    }`}
-                  >
-                    <span
-                      className="h-7 w-4 rounded-[5px] transition-transform duration-500 group-hover:-rotate-12"
-                      style={{ background: `linear-gradient(90deg, ${p.label.bg} 55%, ${p.label.logo} 55% 70%, ${p.label.bg} 70%)` }}
-                    />
-                    <span className="font-cond text-sm font-semibold uppercase tracking-wider">{p.name}</span>
-                  </button>
-                );
-              })}
-            </div>
-
-            <div className="mt-7 grid grid-cols-[1fr_auto] items-end gap-x-6 gap-y-2">
-              <p data-swap className="display text-4xl md:text-[3.4rem]">
-                {product.name}
-              </p>
-              <div data-swap className="row-span-2 flex items-center gap-3 self-end">
-                <span className="font-cond text-xl font-semibold">₹{product.price}</span>
-                <Magnetic>
-                  <a
-                    href={product.url}
-                    target="_blank"
-                    rel="noreferrer"
-                    data-cursor="Buy"
-                    aria-label={`Buy ${product.name} on zyroindia.com`}
-                    className="eyebrow inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-bg"
-                  >
-                    Buy <span aria-hidden>↗</span>
-                  </a>
-                </Magnetic>
+            {/* 2. The flavour: a quieter panel under the line */}
+            <div
+              data-reveal="fade"
+              className="mt-8 rounded-2xl bg-fg/[0.05] p-5 shadow-[inset_0_0_0_1px_color-mix(in_oklab,var(--fg)_10%,transparent)]"
+            >
+              <p className="eyebrow text-[0.7rem] opacity-60">Choose a flavour</p>
+              <div className="mt-3 flex flex-wrap gap-2" role="group" aria-label={`${line.name} flavours`}>
+                {line.products.map((id, i) => {
+                  const p = PRODUCTS[id];
+                  const on = i === active;
+                  return (
+                    <button
+                      key={id}
+                      type="button"
+                      onClick={() => goTo(i)}
+                      data-cursor=""
+                      aria-pressed={on}
+                      className={`flex items-center gap-2 rounded-full py-1.5 pl-1.5 pr-3.5 transition-colors duration-300 ${
+                        on ? "bg-fg text-bg" : "bg-fg/8 hover:bg-fg/15"
+                      }`}
+                    >
+                      <span className="size-5 rounded-full" style={{ backgroundColor: p.label.bg, boxShadow: "inset 0 0 0 1px rgba(255,255,255,0.25)" }} />
+                      <span className="font-cond text-sm font-semibold uppercase tracking-wide">{p.name}</span>
+                    </button>
+                  );
+                })}
               </div>
-              <p data-swap className="font-cond text-sm font-semibold uppercase tracking-widest opacity-60">
-                {product.volume} · {product.notes.join(" · ")}
-              </p>
+
+              <div className="mt-5 flex items-end justify-between gap-4 border-t border-current/10 pt-5">
+                <div>
+                  <p data-swap className="font-cond text-2xl font-semibold uppercase leading-none md:text-3xl">
+                    {product.name}
+                  </p>
+                  <p data-swap className="mt-2 text-sm opacity-60">
+                    {product.volume} · {product.notes.join(" · ")}
+                  </p>
+                </div>
+                <div data-swap className="flex shrink-0 items-center gap-3">
+                  <span className="font-cond text-xl font-semibold">₹{product.price}</span>
+                  <Magnetic>
+                    <a
+                      href={product.url}
+                      target="_blank"
+                      rel="noreferrer"
+                      data-cursor="Buy"
+                      aria-label={`Buy ${product.name} on zyroindia.com`}
+                      className="eyebrow inline-flex items-center gap-2 rounded-full bg-accent px-5 py-3 text-bg"
+                    >
+                      Buy <span aria-hidden>↗</span>
+                    </a>
+                  </Magnetic>
+                </div>
+              </div>
             </div>
           </div>
           </div>

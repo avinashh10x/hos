@@ -8,12 +8,13 @@ import { useReveal, useStageTrigger } from "../hooks";
 // The things Zyro removed, floating round the can like bubbles.
 // d = desktop position, m = mobile position, both % of the frame (centre of the bubble).
 const EXTRAS = [
-  { word: "Sugar", d: [55, 22], m: [22, 30] },
-  { word: "Calories", d: [86, 18], m: [76, 26] },
-  { word: "Empty claims", d: [51, 52], m: [22, 55] },
-  { word: "Extra noise", d: [88, 48], m: [78, 50] },
-  { word: "Distractions", d: [56, 80], m: [26, 74] },
-  { word: "Guilt", d: [86, 78], m: [76, 72] },
+  // Two columns mirrored around the can (centre ~71% across, ~53% down), three even rows
+  { word: "Sugar", d: [52, 27], m: [20, 31] },
+  { word: "Calories", d: [90, 27], m: [80, 31] },
+  { word: "Empty claims", d: [52, 53], m: [20, 53] },
+  { word: "Extra noise", d: [90, 53], m: [80, 53] },
+  { word: "Distractions", d: [52, 79], m: [20, 75] },
+  { word: "Guilt", d: [90, 79], m: [80, 75] },
 ];
 
 const THROW = (i: number) => 0.45 + i * 0.4;
@@ -124,17 +125,17 @@ export function Subtract() {
   };
 
   return (
-    <section ref={ref} id="story" data-pose="subtract" data-pose-hold className="relative h-[320vh]">
+    <section ref={ref} id="story" data-pose="subtract" data-pose-hold data-reveal-scope className="relative h-[320vh]">
       <div className="sticky top-0 z-20 h-svh overflow-clip">
         <div className="absolute inset-x-5 top-24 md:inset-x-auto md:left-0 md:top-1/2 md:w-[calc(var(--frame)*0.42)] md:-translate-y-1/2">
           <p data-reveal="fade" className="eyebrow mb-6 text-accent">
             The Zyro philosophy
           </p>
-          <h2 data-reveal="lines" className="serif text-[10vw] leading-[0.95] md:text-[4.6vw]">
-            What you remove matters more than what you <em className="text-accent">add.</em>
+          <h2 data-reveal="lines" className="lead text-[8vw] leading-[1.08] md:text-[calc(var(--frame)*0.034)]">
+            What you remove matters more than what you <span className="text-accent">add.</span>
           </h2>
           <div data-reveal="fade" className="mt-10 flex items-end gap-5 max-md:hidden">
-            <span ref={count} className="serif text-[7vw] leading-[0.8] tabular-nums">
+            <span ref={count} className="display text-[7vw] leading-[0.8] tabular-nums">
               6
             </span>
             <span className="pb-2 text-sm leading-snug opacity-70">
@@ -143,7 +144,7 @@ export function Subtract() {
               Scroll, or pop them yourself.
             </span>
           </div>
-          <p data-clarity className="serif mt-8 text-2xl italic leading-tight text-accent max-md:hidden md:text-3xl">
+          <p data-clarity className="lead mt-8 text-2xl leading-tight text-accent max-md:hidden md:text-3xl">
             Leaving behind clarity, discipline and purpose.
           </p>
         </div>
@@ -168,7 +169,7 @@ export function Subtract() {
             <span
               data-bubble
               data-cursor="Pop"
-              className="animate-float relative block rounded-full px-5 py-2.5 md:px-7 md:py-3.5"
+              className="animate-float relative block rounded-full px-3.5 py-2 md:px-7 md:py-3.5"
               style={{
                 animationDelay: `${i * -1.1}s`,
                 background:
@@ -177,7 +178,7 @@ export function Subtract() {
                 backdropFilter: "blur(6px)",
               }}
             >
-              <span className="display relative block whitespace-nowrap text-[5.5vw] md:text-[2vw]">{e.word}</span>
+              <span className="display relative block whitespace-nowrap text-[4.3vw] md:text-[2vw]">{e.word}</span>
               <span data-strike className="absolute inset-x-4 top-1/2 h-[3px] origin-left scale-x-0 bg-accent" />
               <span className="absolute left-[22%] top-[18%] h-1.5 w-3 -rotate-12 rounded-full bg-white/60 blur-[1px]" />
             </span>

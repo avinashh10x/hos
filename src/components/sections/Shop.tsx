@@ -64,7 +64,7 @@ export function Shop() {
         </p>
         <h2 className="display text-[18vw] md:text-[8vw]">
           <span data-reveal="chars" className="block">
-            Pick your <span className="serif normal-case text-accent">0</span>
+            Pick your <span className="text-accent">0</span>
           </span>
         </h2>
         <p data-reveal="fade" className="mt-5 max-w-[44ch] opacity-75">

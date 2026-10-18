@@ -51,7 +51,13 @@ export function useReveal(scope: RefObject<HTMLElement | null>, deps: unknown[] 
       root.querySelectorAll<HTMLElement>("[data-reveal]").forEach((el) => {
         const kind = el.dataset.reveal;
         const delay = Number(el.dataset.revealDelay ?? 0);
-        const trigger = { trigger: el, start: "top 88%", once: true };
+        // Inside a pinned (sticky) layer an element's measured position moves with the pin,
+        // so its own trigger can land after the section has passed. Those sections carry
+        // data-reveal-scope, and their contents reveal when the section itself arrives.
+        const scope = el.closest<HTMLElement>("[data-reveal-scope]");
+        const trigger = scope
+          ? { trigger: scope, start: "top 60%", once: true }
+          : { trigger: el, start: "top 88%", once: true };
         if (reduce) {
           gsap.set(el, { autoAlpha: 1 });
           return;

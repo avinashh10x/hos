@@ -104,9 +104,8 @@ async function paintLabel(p: Product, width: number) {
   const mark = await markPromise;
 
   const display = fontVar("--font-display", "Arial Narrow, sans-serif");
-  const serif = fontVar("--font-serif", "Georgia, serif");
   await Promise.all(
-    [`500 40px ${display}`, `600 40px ${display}`, `700 40px ${display}`, `400 40px ${serif}`].map((f) =>
+    [`500 40px ${display}`, `600 40px ${display}`, `700 40px ${display}`].map((f) =>
       document.fonts.load(f),
     ),
   ).catch(() => {});

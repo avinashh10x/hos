@@ -43,17 +43,17 @@ export function Footer() {
   );
 
   return (
-    <footer ref={ref} data-pose="footer" className="relative flex min-h-svh flex-col justify-between overflow-clip pb-6 pt-24 md:pt-28">
+    <footer ref={ref} data-pose="footer" data-reveal-scope className="relative flex min-h-svh flex-col overflow-clip pb-6 pt-20 md:justify-between md:pt-28">
       <div className="relative z-20 text-center">
-        <h2 className="display text-[18vw] md:text-[9.5vw]">
+        <h2 className="display text-[14vw] md:text-[9.5vw]">
           <span data-reveal="chars" className="block">
             Crack one open
           </span>
         </h2>
-        <p data-reveal="fade" className="serif mt-3 text-2xl italic opacity-80 md:text-3xl">
+        <p data-reveal="fade" className="lead mt-3 text-lg opacity-80 md:text-3xl">
           A choice you can make for taste, guilt free.
         </p>
-        <div data-reveal="fade" data-gas-ceiling className="mt-8">
+        <div data-reveal="fade" data-gas-ceiling className="mt-6 md:mt-8">
           <Magnetic>
             <a
               href="https://zyroindia.com/pages/shop-all"
@@ -73,25 +73,25 @@ export function Footer() {
         onClick={() => crackOpen()}
         data-cursor="Open"
         aria-label="Open the can"
-        className="absolute bottom-0 left-1/2 z-30 h-[40vh] w-[min(34vw,420px)] -translate-x-1/2 rounded-t-full max-md:w-[70vw]"
+        className="absolute bottom-0 left-1/2 z-30 h-[40vh] w-[min(34vw,420px)] -translate-x-1/2 rounded-t-full max-md:h-[32vh] max-md:w-[72vw]"
       />
 
-      <div className="relative z-20 grid gap-8 text-sm md:grid-cols-[1fr_34vw_1fr] md:items-end">
-        <div data-reveal="fade" className="space-y-1">
-          <span className="logo-mask mb-5 block h-14 w-32 text-accent" aria-hidden />
+      <div className="relative z-20 mt-10 grid gap-4 text-sm max-md:text-center md:mt-0 md:gap-8 md:grid-cols-[1fr_34vw_1fr] md:items-end">
+        <div data-reveal="fade" className="space-y-1 max-md:flex max-md:flex-col max-md:items-center">
+          <span className="logo-mask mb-3 block h-10 w-24 text-accent md:mb-5 md:h-14 md:w-32" aria-hidden />
           <a href="mailto:hello@zyroindia.com" className="block hover:text-accent">
             hello@zyroindia.com
           </a>
           <a href="tel:+911244653250" className="block hover:text-accent">
             0124-4653250
           </a>
-          <p className="max-w-[30ch] pt-2 leading-relaxed opacity-60">
+          <p className="max-w-[30ch] pt-2 leading-relaxed opacity-60 max-md:hidden">
             DLF Centre Court, Golf Course Road, Sector 42, Gurugram 122002
           </p>
         </div>
         <div className="max-md:hidden" />
-        <div data-reveal="fade" className="flex flex-col gap-6 md:items-end md:text-right">
-          <ul className="flex flex-wrap gap-x-5 gap-y-1 md:justify-end">
+        <div data-reveal="fade" className="flex flex-col gap-3 max-md:items-center md:items-end md:gap-6 md:text-right">
+          <ul className="flex flex-wrap gap-x-5 gap-y-1 max-md:justify-center md:justify-end">
             {SOCIAL.map((s) => (
               <li key={s.label}>
                 <a href={s.href} target="_blank" rel="noreferrer" className="font-cond text-lg font-semibold uppercase hover:text-accent">
@@ -100,7 +100,7 @@ export function Footer() {
               </li>
             ))}
           </ul>
-          <ul className="flex flex-wrap gap-x-4 gap-y-1 opacity-60 md:justify-end">
+          <ul className="flex flex-wrap gap-x-4 gap-y-1 opacity-60 max-md:justify-center md:justify-end">
             {POLICIES.map((s) => (
               <li key={s.label}>
                 <a href={s.href} target="_blank" rel="noreferrer" className="hover:text-accent hover:opacity-100">
